@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   const services = [
     { name: "Scheduled Services", href: "/services/scheduled" },
@@ -27,15 +30,15 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
+    <header className={`w-full ${isHome ? "fixed" : "sticky"} top-0 ${isHome ? "z-[9999]" : "z-50"} ${isHome ? "border-transparent bg-transparent shadow-none" : "border-b border-gray-200 bg-white shadow-sm"}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
-          🚗 BM Motors
+        <a href="/" className={`text-2xl font-bold transition-colors ${isHome ? "text-white hover:text-white/80" : "text-gray-900 hover:text-blue-600"}`}>
+          BM Motors
         </a>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
-          <a href="/" className="hover:text-blue-600 transition-colors">Home</a>
+        <nav className={`hidden lg:flex items-center gap-7 text-sm font-medium ${isHome ? "text-white/90" : "text-gray-700"}`}>
+          <a href="/" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>Home</a>
           
           {/* Services Dropdown */}
           <div
@@ -43,7 +46,7 @@ export default function Header() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button className="hover:text-blue-600 flex items-center gap-1 transition-colors py-2">
+            <button className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} flex items-center gap-1 transition-colors py-2`}>
               Services
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -72,7 +75,7 @@ export default function Header() {
             onMouseEnter={() => setCategoriesOpen(true)}
             onMouseLeave={() => setCategoriesOpen(false)}
           >
-            <button className="hover:text-blue-600 flex items-center gap-1 transition-colors py-2">
+            <button className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} flex items-center gap-1 transition-colors py-2`}>
               Categories
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -95,23 +98,23 @@ export default function Header() {
             )}
           </div>
 
-          <a href="/areas" className="hover:text-blue-600 transition-colors">Areas</a>
-          <a href="/pricing" className="hover:text-blue-600 transition-colors">Pricing</a>
-          <a href="/reviews" className="hover:text-blue-600 transition-colors">Reviews</a>
-          <a href="/faqs" className="hover:text-blue-600 transition-colors">FAQs</a>
-          <a href="/contact" className="hover:text-blue-600 transition-colors">Contact</a>
+          <a href="/areas" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>Areas</a>
+          <a href="/pricing" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>Pricing</a>
+          <a href="/reviews" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>Reviews</a>
+          <a href="/faqs" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>FAQs</a>
+          <a href="/contact" className={`${isHome ? "text-white/90 hover:text-white" : "hover:text-blue-600"} transition-colors`}>Contact</a>
         </nav>
 
         {/* CTA Button - Desktop */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+919637925555" className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg font-semibold transition-colors shadow-md">
-            📞 Call Now
+          <a href="tel:+919637925555" className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold transition-colors shadow-md">
+             Call Now
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden p-2 text-gray-700"
+          className={`lg:hidden p-2 ${isHome ? "text-white" : "text-gray-700"}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,8 +157,8 @@ export default function Header() {
             <a href="/reviews" className="block py-2 text-gray-700 hover:text-blue-600 font-medium">Reviews</a>
             <a href="/faqs" className="block py-2 text-gray-700 hover:text-blue-600 font-medium">FAQs</a>
             <a href="/contact" className="block py-2 text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-            <a href="tel:+919637925555" className="block mt-4 bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-lg font-semibold text-center transition-colors">
-              📞 Call Now
+            <a href="tel:+919637925555" className="block mt-4 bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-lg font-semibold text-center transition-colors">
+               Call Now
             </a>
           </div>
         </div>

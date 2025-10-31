@@ -12,17 +12,17 @@ export default function Home() {
             <div className="space-y-6">
               <div className="inline-block">
                 <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                  🚗 Mumbai&apos;s Trusted Car Service Center
+                  🚗 Pune&apos;s Trusted Car Service Center
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 Expert Car Service &
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">
-                  Repair in Mumbai
+                  Repair in Pune
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-blue-100 leading-relaxed">
-                Professional car servicing, AC repair, denting & painting, detailing, and more. Free pickup & drop across Mumbai.
+                Professional car servicing, AC repair, denting & painting, detailing, and more. Free pickup & drop across Pune.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a href="tel:+919637925555" className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
@@ -71,7 +71,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Free Pickup & Drop</div>
-                    <div className="text-sm text-gray-500">Across Mumbai</div>
+                    <div className="text-sm text-gray-500">Across Pune</div>
                   </div>
                 </div>
               </div>
@@ -157,42 +157,58 @@ export default function Home() {
 
       {/* Areas Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">Popular Areas We Serve</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {["Andheri", "Mulund", "Powai", "Chembur", "Goregaon", "Ghatkopar", "Bandra", "Kurla", "Borivali", "Parel"].map((area) => (
-            <a key={area} href={`/areas/${area.toLowerCase()}`} className="border-2 border-gray-200 rounded-xl px-4 py-3 bg-white hover:border-blue-500 hover:bg-blue-50 hover:shadow-md transition-all duration-300 text-center font-medium">
-              {area}
-            </a>
-          ))}
-        </div>
-      </section>
+  <h2 className="text-3xl font-bold mb-8 text-gray-900">Popular Areas We Serve</h2>
+  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+    {[
+      "Kothrud",
+      "Viman Nagar",
+      "Hinjewadi",
+      "Kalyani Nagar",
+      "Baner",
+      "Wakad",
+      "Hadapsar",
+      "Pimple Saudagar",
+      "Camp",
+      "Magarpatta"
+    ].map((area) => (
+      <a
+        key={area}
+        href={`/areas/${area.toLowerCase().replace(/\s+/g, "-")}`}
+        className="border-2 border-gray-200 rounded-xl px-4 py-3 bg-white hover:border-blue-500 hover:bg-blue-50 hover:shadow-md transition-all duration-300 text-center font-medium"
+      >
+        {area}
+      </a>
+    ))}
+  </div>
+</section>
+
 
       {/* Testimonials */}
       <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">What Our Customers Say</h2>
-            <p className="text-lg text-blue-100">Real reviews from satisfied car owners in Mumbai</p>
+            <p className="text-lg text-blue-100">Real reviews from satisfied car owners in Pune</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 text: "Pickup & drop was on time and the car came back spotless. Price was almost half of what the dealership quoted.",
-                name: "Gurkirat Singh",
-                area: "Andheri",
-                rating: 5,
+                name: "Saurabh Ganjale",
+                area: "Kharadi",
+                rating: 4,
               },
               {
                 text: "AC service done right. Cooling is back to normal and the whole process was smooth. Highly recommend!",
-                name: "Ankur Singh",
-                area: "Powai",
+                name: "Ajay Bhor",
+                area: "Pashan",
                 rating: 5,
               },
               {
                 text: "Neat dent repair and perfect paint match. Great value and professional work. Very impressed with the finish.",
-                name: "Yatish",
-                area: "Colaba",
-                rating: 5,
+                name: "Bhavesh Patil",
+                area: "Manchar",
+                rating: 4,
               },
             ].map((t) => (
               <div key={t.name} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
@@ -206,7 +222,7 @@ export default function Home() {
                 <p className="text-white mb-4 leading-relaxed">&quot;{t.text}&quot;</p>
                 <div className="text-sm border-t border-white/20 pt-4">
                   <div className="font-semibold text-white">{t.name}</div>
-                  <div className="text-blue-100">{t.area}, Mumbai</div>
+                  <div className="text-blue-100">{t.area}, Pune</div>
                 </div>
               </div>
             ))}
@@ -224,7 +240,7 @@ export default function Home() {
           {[
             {
               q: "Do you offer pickup and drop?",
-              a: "Yes, pickup & drop is available across most areas in Mumbai at no extra cost.",
+              a: "Yes, pickup & drop is available across most areas in Pune at no extra cost.",
             },
             {
               q: "Which services do you provide?",

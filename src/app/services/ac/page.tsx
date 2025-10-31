@@ -1,162 +1,315 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Snowflake, Settings, Zap, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function ACServicePage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="inline-block bg-blue-500/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">❄️ Premium AC Service</div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Car AC Service & Repair</h1>
-              <p className="text-xl text-blue-100 mb-8">Keep your car cool with our comprehensive AC maintenance. Expert diagnostics, genuine refrigerants, and warranty service.</p>
-              <div className="flex flex-wrap gap-4">
-                <a href="tel:+919637925555" className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-xl">
-                  📞 Book Now
-                </a>
-                <a href="#services" className="bg-white/10 backdrop-blur-md border-2 border-white hover:bg-white hover:text-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all">
-                  View Services
-                </a>
-              </div>
-            </div>
-            <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="AC Service & Repair" fill className="object-cover" priority />
-            </div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+        {/* Floating car illustration */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-1/3 left-1/3 w-72 h-72 bg-indigo-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-60 h-60 bg-cyan-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 py-24 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              className="text-center lg:text-left"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+            >
+              <motion.div 
+                className="inline-block bg-gradient-to-r from-blue-500/30 to-indigo-500/30 backdrop-blur-sm px-5 py-2.5 rounded-full text-sm font-medium mb-6 border border-white/10"
+                variants={itemVariants}
+              >
+                ❄️ Premium AC Service
+              </motion.div>
+              
+              <motion.h1 
+                className="text-4xl md:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200"
+                variants={itemVariants}
+              >
+                Car AC Service & Repair
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto lg:mx-0"
+                variants={itemVariants}
+              >
+                Keep your car cool with our comprehensive AC maintenance. Expert diagnostics, genuine refrigerants, and warranty service.
+              </motion.p>
+              
+              <motion.div 
+                className="flex flex-wrap justify-center lg:justify-start gap-5"
+                variants={itemVariants}
+              >
+                <motion.a 
+                  href="tel:+919637925555" 
+                  className="relative group bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-9 rounded-xl transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/30"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                     Book Now
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </motion.a>
+                
+                <motion.a 
+                  href="#services" 
+                  className="relative group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-bold py-4 px-9 rounded-xl transition-all hover:border-white/30"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    View Services
+                  </span>
+                </motion.a>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" 
+                alt="AC Service & Repair" 
+                fill 
+                className="object-cover" 
+                priority 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section id="services" className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center text-gray-900">Our AC Services</h2>
-        <p className="text-center text-gray-600 mb-12 text-lg">Complete AC solutions for your car</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-900">AC Gas Refill</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Leak detection & repair
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Vacuum & pressure test
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Genuine refrigerant refill
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Performance check
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-900">Compressor Service</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Compressor diagnostics
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Clutch plate inspection
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Belt replacement
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Repair/replacement
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-900">Complete AC Service</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Filter cleaning/replacement
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Evaporator coil cleaning
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Condenser cleaning
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Blower motor check
-              </li>
-            </ul>
-          </div>
+      {/* Services */}
+      <section id="services" className="max-w-7xl mx-auto px-4 py-24">
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={fadeInUp}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Our AC Services</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Complete AC solutions for your car</p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { 
+              icon: <Snowflake className="w-8 h-8 text-blue-600" />, 
+              title: "AC Gas Refill", 
+              items: ["Leak detection & repair", "Vacuum & pressure test", "Genuine refrigerant refill", "Performance check"] 
+            },
+            { 
+              icon: <Settings className="w-8 h-8 text-blue-600" />, 
+              title: "Compressor Service", 
+              items: ["Compressor diagnostics", "Clutch plate inspection", "Belt replacement", "Repair/replacement"] 
+            },
+            { 
+              icon: <Zap className="w-8 h-8 text-blue-600" />, 
+              title: "Complete AC Service", 
+              items: ["Filter cleaning/replacement", "Evaporator coil cleaning", "Condenser cleaning", "Blower motor check"] 
+            }
+          ].map((service, i) => (
+            <motion.div 
+              key={i} 
+              className="bg-white border border-gray-200 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+              
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                {service.icon}
+              </div>
+              
+              <h3 className="text-xl font-bold mb-4 text-gray-900">{service.title}</h3>
+              
+              <ul className="space-y-3 text-gray-700">
+                {service.items.map((item, j) => (
+                  <motion.li 
+                    key={j} 
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: j * 0.1 }}
+                  >
+                    <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center">
+                      <CheckCircle className="w-3 h-3 text-blue-600" />
+                    </div>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* Common Problems */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-3 text-center text-gray-900">Common AC Problems We Fix</h2>
-          <p className="text-center text-gray-600 mb-12 text-lg">Expert solutions for all AC issues</p>
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Common AC Problems We Fix</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Expert solutions for all AC issues</p>
+          </motion.div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
-              <div className="text-4xl mb-3">❄️</div>
-              <h4 className="text-lg font-bold mb-2 text-gray-900">Weak Cooling</h4>
-              <p className="text-sm text-gray-600">Low refrigerant, clogged filters, or compressor issues</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
-              <div className="text-4xl mb-3">🔉</div>
-              <h4 className="text-lg font-bold mb-2 text-gray-900">Strange Noises</h4>
-              <p className="text-sm text-gray-600">Faulty compressor, loose belt, or blower motor problems</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
-              <div className="text-4xl mb-3">👃</div>
-              <h4 className="text-lg font-bold mb-2 text-gray-900">Bad Odor</h4>
-              <p className="text-sm text-gray-600">Dirty cabin filter or bacterial growth in evaporator</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
-              <div className="text-4xl mb-3">💧</div>
-              <h4 className="text-lg font-bold mb-2 text-gray-900">Water Leakage</h4>
-              <p className="text-sm text-gray-600">Blocked drain tube or damaged evaporator</p>
-            </div>
+            {[
+              { icon: "❄️", title: "Weak Cooling", desc: "Low refrigerant, clogged filters, or compressor issues" },
+              { icon: "🔉", title: "Strange Noises", desc: "Faulty compressor, loose belt, or blower motor problems" },
+              { icon: "👃", title: "Bad Odor", desc: "Dirty cabin filter or bacterial growth in evaporator" },
+              { icon: "💧", title: "Water Leakage", desc: "Blocked drain tube or damaged evaporator" }
+            ].map((problem, i) => (
+              <motion.div 
+                key={i} 
+                className="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="text-4xl mb-3">{problem.icon}</div>
+                <h4 className="text-lg font-bold mb-2 text-gray-900">{problem.title}</h4>
+                <p className="text-sm text-gray-600">{problem.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-10 md:p-12 text-center">
-          <h3 className="text-3xl font-bold mb-4 text-white">Get Your AC Fixed Today</h3>
-          <p className="text-xl text-blue-100 mb-8">Professional AC service with genuine parts & warranty</p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a href="tel:+919637925555" className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-xl">
-              📞 Call: +91 9637925555
-            </a>
-            <a href="mailto:bmmotors55@gmail.com" className="bg-white hover:bg-gray-100 text-blue-700 font-bold py-3 px-8 rounded-lg transition-all">
-              ✉️ Email Us
-            </a>
+      <section className="max-w-7xl mx-auto px-4 py-24">
+        <motion.div 
+          className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Glowing elements */}
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400 rounded-full mix-blend-soft-light filter blur-3xl opacity-30"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-400 rounded-full mix-blend-soft-light filter blur-3xl opacity-30"></div>
+          
+          <div className="relative z-10">
+            <motion.h3 
+              className="text-3xl md:text-4xl font-bold mb-5 text-white"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Get Your AC Fixed Today
+            </motion.h3>
+            
+            <motion.p 
+              className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              Professional AC service with genuine parts & warranty
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-wrap justify-center gap-5"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.a 
+                href="tel:+919637925555" 
+                className="relative group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-9 rounded-xl transition-all shadow-xl hover:shadow-red-500/40"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                   Call: +91 9637925555
+                </span>
+              </motion.a>
+              
+              <motion.a 
+                href="mailto:bmmotors55@gmail.com" 
+                className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-bold py-4 px-9 rounded-xl transition-all hover:border-white/30"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ✉️ Email Us
+              </motion.a>
+            </motion.div>
+            
+            <motion.div 
+              className="mt-10 flex flex-wrap justify-center items-center gap-8 text-blue-100"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span>1000+ Happy Customers</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span>5-Star Rated Service</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span>Warranty on All Work</span>
+              </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

@@ -5,9 +5,9 @@ import Header from "@/components/Header";
 // Removed Geist font setup. Use native modern system fonts instead
 
 export const metadata: Metadata = {
-  title: "BM Motors | Car Service & Repair in Mumbai",
+  title: "BM Motors | Car Service & Repair in Pune",
   description:
-    "BM Motors - Expert car service, AC repair, denting & painting, detailing, batteries, tyres, and more in Mumbai. Call +91 9637925555 / 9763875767 or mail bmmotors55@gmail.com.",
+    "BM Motors - Expert car service, AC repair, denting & painting, detailing, batteries, tyres, and more in Pune. Call +91 9637925555 / 9763875767 or mail bmmotors55@gmail.com.",
 };
 
 export default function RootLayout({
@@ -47,11 +47,11 @@ export default function RootLayout({
               <div>
                 <h3 className="font-semibold mb-3 text-white">Popular Areas</h3>
                 <ul className="space-y-2">
-                  <li><a className="hover:underline hover:text-white" href="/areas/andheri">Andheri</a></li>
-                  <li><a className="hover:underline hover:text-white" href="/areas/bandra">Bandra</a></li>
-                  <li><a className="hover:underline hover:text-white" href="/areas/borivali">Borivali</a></li>
-                  <li><a className="hover:underline hover:text-white" href="/areas/chembur">Chembur</a></li>
-                  <li><a className="hover:underline hover:text-white" href="/areas/powai">Powai</a></li>
+                  <li><a className="hover:underline hover:text-white" href="/areas/andheri">Baner</a></li>
+                  <li><a className="hover:underline hover:text-white" href="/areas/bandra">Katraj</a></li>
+                  <li><a className="hover:underline hover:text-white" href="/areas/borivali">Wakad</a></li>
+                  <li><a className="hover:underline hover:text-white" href="/areas/chembur">Viman Nagar</a></li>
+                  <li><a className="hover:underline hover:text-white" href="/areas/powai">Kharadi</a></li>
                 </ul>
               </div>
               <div>
@@ -60,7 +60,7 @@ export default function RootLayout({
                 <p className="mb-2"><a className="hover:underline hover:text-white" href="tel:+919637925555">+91 9637925555</a></p>
                 <p className="mb-4"><a className="hover:underline hover:text-white" href="tel:+919763875767">9763875767</a></p>
                 <div className="flex gap-2">
-                  <a href="tel:+919637925555" className="inline-flex items-center rounded-md bg-orange-500 hover:bg-orange-600 text-white px-3 py-2">Call Now</a>
+                  <a href="tel:+919637925555" className="inline-flex items-center rounded-md bg-red-600 hover:bg-red-700 text-white px-3 py-2">Call Now</a>
                   <a href="mailto:bmmotors55@gmail.com" className="inline-flex items-center rounded-md border border-gray-600 hover:border-white px-3 py-2 hover:text-white">Mail Us</a>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export default function RootLayout({
             <div className="border-t border-gray-800 text-xs text-gray-400 bg-gray-950">
               <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
                 <span>© {new Date().getFullYear()} BM Motors. All rights reserved.</span>
-                <span>Mumbai, Maharashtra</span>
+                <span>Pune, Maharashtra</span>
               </div>
             </div>
           </footer>

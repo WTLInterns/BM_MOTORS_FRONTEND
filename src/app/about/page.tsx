@@ -1,3 +1,5 @@
+import { Wrench, CheckCircle, DollarSign, Car, Shield, Timer } from "lucide-react";
+
 export default function AboutPage() {
   return (
     <div className="bg-white">
@@ -7,7 +9,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">About BM Motors</h1>
-              <p className="text-xl text-blue-100">Mumbai's trusted partner for professional car care and service excellence</p>
+              <p className="text-xl text-blue-100">Pune's trusted partner for professional car care and service excellence</p>
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
               <img src="https://images.unsplash.com/photo-1632823469527-5c9bfad7e8f5?w=800&q=80" alt="BM Motors Team" className="object-cover w-full h-full" />
@@ -22,10 +24,10 @@ export default function AboutPage() {
           <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-md">
             <h2 className="text-3xl font-bold mb-4 text-gray-900">Who We Are</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              BM Motors is Mumbai's trusted car service center, providing comprehensive automotive care with expertise, quality, and transparency. We understand that your car is more than just a vehicle—it's your daily companion, and we treat it with the care it deserves.
+              BM Motors is Pune's trusted car service center, providing comprehensive automotive care with expertise, quality, and transparency. We understand that your car is more than just a vehicle—it's your daily companion, and we treat it with the care it deserves.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              With years of experience serving car owners across Mumbai, we've built our reputation on honest service, skilled technicians, and competitive pricing. From routine maintenance to major repairs, we're equipped to handle all your car care needs.
+              With years of experience serving car owners across Pune, we've built our reputation on honest service, skilled technicians, and competitive pricing. From routine maintenance to major repairs, we're equipped to handle all your car care needs.
             </p>
           </div>
 
@@ -42,15 +44,39 @@ export default function AboutPage() {
 
         {/* Why Choose Us */}
         <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center text-gray-900">Why Choose BM Motors?</h2>
-        <p className="text-center text-gray-600 mb-12 text-lg">Your trusted car service partner in Mumbai</p>
+        <p className="text-center text-gray-600 mb-12 text-lg">Your trusted car service partner in Pune</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {[
-            {icon: "🔧", title: "Expert Technicians", desc: "Certified mechanics with extensive experience across all car brands and models"},
-            {icon: "✅", title: "Quality Parts", desc: "Only genuine OEM or approved aftermarket parts with manufacturer warranty"},
-            {icon: "💰", title: "Transparent Pricing", desc: "Clear estimates before work begins with no hidden charges or surprises"},
-            {icon: "🚗", title: "Free Pickup & Drop", desc: "Complimentary doorstep service across Mumbai for your convenience"},
-            {icon: "🛡️", title: "Service Warranty", desc: "Comprehensive warranty on parts and labor for complete peace of mind"},
-            {icon: "⏱️", title: "Quick Turnaround", desc: "Efficient service without compromising quality to get you back on the road"}
+            { 
+      icon: <Wrench className="w-10 h-10 text-blue-600" />, 
+      title: "Expert Technicians", 
+      desc: "Certified mechanics with extensive experience across all car brands and models" 
+    },
+    { 
+      icon: <CheckCircle className="w-10 h-10 text-green-600" />, 
+      title: "Quality Parts", 
+      desc: "Only genuine OEM or approved aftermarket parts with manufacturer warranty" 
+    },
+    { 
+      icon: <DollarSign className="w-10 h-10 text-amber-600" />, 
+      title: "Transparent Pricing", 
+      desc: "Clear estimates before work begins with no hidden charges or surprises" 
+    },
+    { 
+      icon: <Car className="w-10 h-10 text-red-600" />, 
+      title: "Free Pickup & Drop", 
+      desc: "Complimentary doorstep service across Pune for your convenience" 
+    },
+    { 
+      icon: <Shield className="w-10 h-10 text-purple-600" />, 
+      title: "Service Warranty", 
+      desc: "Comprehensive warranty on parts and labor for complete peace of mind" 
+    },
+    { 
+      icon: <Timer className="w-10 h-10 text-orange-600" />, 
+      title: "Quick Turnaround", 
+      desc: "Efficient service without compromising quality to get you back on the road" 
+    }
           ].map((item, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
               <div className="text-5xl mb-4">{item.icon}</div>
@@ -82,7 +108,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Experience the BM Motors Difference</h2>
             <p className="text-xl text-blue-100 mb-8">Visit us today and discover why thousands of car owners trust BM Motors. Quality service, honest pricing, customer satisfaction guaranteed.</p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <a href="tel:+919637925555" className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-xl">📞 Call Now</a>
+              <a href="tel:+919637925555" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-xl"> Call Now</a>
               <a href="/contact" className="bg-white hover:bg-gray-100 text-blue-700 font-bold py-3 px-8 rounded-lg transition-all">Contact Us</a>
             </div>
           </div>
