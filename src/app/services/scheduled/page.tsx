@@ -108,7 +108,7 @@ export default function ScheduledServicePage() {
             >
               <Image 
                 src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80" 
-                alt="Scheduled Services" 
+                alt="Scheduled Services"
                 fill 
                 className="object-cover" 
                 priority 
