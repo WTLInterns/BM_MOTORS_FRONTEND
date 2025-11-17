@@ -50,8 +50,8 @@ export default function Home() {
             <div className="hidden lg:block"></div>
 
             {/* Right side - Compact Quote Form Card */}
-            <div className="lg:ml-auto w-full max-w-md">
-              <div className="rounded-xl shadow-xl p-6 bg-white/10 backdrop-blur-md ring-1 ring-white/20">
+            <div className="lg:ml-auto w-full max-w-md mt-20">
+              <div className="rounded-xl shadow-xl p-6 bg-white/10 backdrop-blur-md ring-1 ring-white/10">
                 <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   Experience The Best Car Services
                 </h1>
