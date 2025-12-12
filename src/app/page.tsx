@@ -1,12 +1,21 @@
-
 'use client';
 
 import Image from "next/image";
 import { CheckCircle, Timer, DollarSign, Car, Wrench, Smartphone, ChevronRight } from "lucide-react";
 import { useRef } from "react";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      marquee: any;
+    }
+  }
+}
+
+const Marquee: any = 'marquee';
+
 export default function Home() {
-  const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef<(HTMLDivElement & { scrollBy: (options: ScrollToOptions) => void }) | null>(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -438,7 +447,6 @@ export default function Home() {
                     {/* Content */}
                     <div className="text-center">
                       <div className="flex items-center justify-center gap-2 mb-2">
-                        <span className="text-lg">{step.icon}</span>
                         <h4 className="font-bold text-gray-900 text-base">{step.name}</h4>
                       </div>
                       <p className="text-gray-600 text-sm leading-relaxed">
@@ -568,25 +576,32 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Logo Grid - Larger Logos without Hover Effect */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-items-center px-8">
-            {[...Array(14)].map((_, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl p-5 shadow-lg border border-gray-200 w-full max-w-[160px]"
-              >
-                <div className="w-full h-10 flex items-center justify-center">
-                  <img
-                    src={`/images/logo${idx + 1}.png`}
-                    alt={`Client Logo ${idx + 1}`}
-                    className="max-h-16 max-w-full object-contain opacity-100"
-                    onError={(e) => {
-                      e.target.src = `https://via.placeholder.com/120x60/3B82F6/FFFFFF?text=Logo+${idx + 1}`;
-                    }}
-                  />
-                </div>
+          {/* Auto-scrolling Logos */}
+          <div className="relative overflow-hidden rounded-2xl px-4">
+            <Marquee
+              behavior="scroll"
+              direction="left"
+              scrollAmount={8}
+              className="py-4"
+            >
+              <div className="flex items-center gap-6">
+                {[...Array(14)].map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-xl p-5 shadow-lg border border-gray-200 w-[160px] flex-shrink-0 flex items-center justify-center"
+                  >
+                    <img
+                      src={`/images/logo${idx + 1}.png`}
+                      alt={`Client Logo ${idx + 1}`}
+                      className="max-h-16 max-w-full object-contain opacity-100"
+                      onError={(e: any) => {
+                        e.target.src = `https://via.placeholder.com/120x60/3B82F6/FFFFFF?text=Logo+${idx + 1}`;
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </Marquee>
           </div>
         </div>
       </section>
@@ -667,7 +682,7 @@ export default function Home() {
             {/* Underline */}
             <div className="w-32 h-1.5 bg-gradient-to-r from-red-600 to-black mx-auto mb-6 rounded-full shadow-sm"></div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-              Cashless insurance claims & hassle-free renewals with our trusted partners
+              Cashless insurance claims & hassle free renewals with our trusted partners
             </p>
           </div>
 
@@ -716,35 +731,42 @@ export default function Home() {
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-            {/* Marquee Tag - Right to Left */}
-            <marquee behavior="scroll" direction="left" scrollamount="8" className="py-3">
-              {[
-                "toyota",
-                "honda",
-                "ford",
-                "hundayi",
-                "maruti",
-                "tata",
-                "mahindra",
-                "volkswagen",
-                "renault",
-                "skoda",
-                "suzuki"
-              ].map((company, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex align-middle mx-5 w-40 h-28 bg-blue-50 rounded-2xl items-center justify-center p-4 border-2 border-blue-100 shadow-md"
-                  style={{ verticalAlign: 'middle' }}
-                >
-                  <img
-                    src={`/images/${company}.png`}
-                    alt={`${company} insurance`}
-                    className="h-20 w-auto object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </marquee>
+            {/* Auto-scrolling Brand Logos */}
+            <Marquee
+              behavior="scroll"
+              direction="left"
+              scrollAmount={8}
+              className="py-3"
+            >
+              <div className="inline-flex items-center">
+                {[
+                  "toyota",
+                  "honda",
+                  "ford",
+                  "hundayi",
+                  "maruti",
+                  "tata",
+                  "mahindra",
+                  "volkswagen",
+                  "renault",
+                  "skoda",
+                  "suzuki"
+                ].map((company, idx) => (
+                  <div
+                    key={idx}
+                    className="inline-flex align-middle mx-5 w-40 h-28 bg-blue-50 rounded-2xl items-center justify-center p-4 border-2 border-blue-100 shadow-md"
+                    style={{ verticalAlign: 'middle' }}
+                  >
+                    <img
+                      src={`/images/${company}.png`}
+                      alt={`${company} insurance`}
+                      className="h-20 w-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Marquee>
           </div>
         </div>
       </section>
